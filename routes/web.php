@@ -24,4 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/kasir', [App\Http\Controllers\KasirController::class, 'index'])->name('kasir');
 
-Route::post('/kasir', [App\Http\Controllers\KasirController::class, 'tambah'])->name('tambah.kasir');
+Route::post('/kasir', [App\Http\Controllers\KasirController::class, 'create'])->name('tambah.kasir');
+
+Route::get('/kasir/{id}/edit', [App\Http\Controllers\KasirController::class, 'edit']);
+
+Route::post('/kasir/{id}/update', [App\Http\Controllers\KasirController::class, 'update'])->name('ubah.kasir');

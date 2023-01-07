@@ -2,14 +2,14 @@
 <html>
 
 <head>
-    <title>PRAKTIKUM LARAVEL CRUD</title>
+    <title>Kasir</title>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                Toko Elektronik
             </a>
             <button class="navbar-toggler" type="button" data-bstoggle="collapse" data-bs-target="#navbarSupportedContent"
                 ariacontrols="navbarSupportedContent" aria-expanded="false"aria-label="{{ __('Toggle navigation') }}">
@@ -75,7 +75,8 @@
             </div>
             <div class="col-6 my-4" align="right">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary btn-sm float right" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
                     Tambah Data
                 </button>
             </div>
@@ -86,6 +87,7 @@
                             <th scope="col">No</th>
                             <th>Nama</th>
                             <th>Telepon</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     @foreach ($dataKasir as $item)
@@ -94,6 +96,8 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->Nama }}</td>
                                 <td>{{ $item->Telepon }}</td>
+                                <td><a href="/kasir/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                </td>
                             </tr>
                         </tbody>
                     @endforeach
@@ -111,20 +115,24 @@
                 </div>
                 <div class="modal-body">
                     {{-- Form Modal --}}
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="Nama" placeholder="Nurlinda">
-                    </div>
-                    <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Telepon Kasir</label>
-                        <input type="text" class="form-control" id="Telepon" placeholder="08114413333"
-                            pattern="[0-9]">
-                    </div>
-                    {{-- Form Modal --}}
+                    <form action="{{ route('tambah.kasir') }}" method="POST">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="formGroupExampleInput" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="Nama" name="Nama"
+                                placeholder="Nurlinda">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2" class="form-label">Telepon Kasir</label>
+                            <input type="text" class="form-control" id="Telepon" name="Telepon"
+                                placeholder="08114413333">
+                        </div>
+                        {{-- Form Modal --}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    </form>
                 </div>
             </div>
         </div>
