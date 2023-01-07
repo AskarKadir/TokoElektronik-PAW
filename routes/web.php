@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KasirController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/kasir', [App\Http\Controllers\KasirController::class, 'index'])->name('kasir');
+
+Route::post('/kasir', [App\Http\Controllers\KasirController::class, 'tambah'])->name('tambah.kasir');

@@ -12,4 +12,10 @@ class KasirController extends Controller
         $dataKasir = \App\Models\Kasir::all();
         return view('kasir.index', ['dataKasir' => $dataKasir]);
     }
+
+    public function create(Request $request)
+    {
+        \App\Models\Kasir::create($request->all());
+        return redirect('/kasir')->with('Sukses', 'Data Berhasil ditambahkan');
+    }
 }
