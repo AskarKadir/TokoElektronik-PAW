@@ -8,19 +8,29 @@
                     {{ session('Sukses') }}
                 </div>
             @endif
-            <h1 class="py-3">Edit Data Kasir</h1>
+            <h1 class="py-3">Edit Data Barang</h1>
             <div class="row">
                 <form method="post" action="/kasir/{{ $item->id }}/update">
                     @csrf
                     <div class="form-group mb-3">
-                        <label for="exampleInputEmail1">Nama</label>
+                        <label for="exampleInputEmail1">Nama Barang</label>
                         <input name="Nama" type="text" class="form-control mt-2" id="exampleInputEmail1"
-                            aria-describedby="EmailHelp" placeholder="Nama Kasir" value="{{ $item->Nama }}">
+                            aria-describedby="EmailHelp" placeholder="Terminal Kuningan" value="{{ $item->Nama_Barang }}">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="exampleInputEmail1">NIM</label>
+                        <label for="exampleInputEmail1">Harga Barang</label>
                         <input name="Telepon" type="text" class="form-control mt-2" id="exampleInputEmail1"
-                            aria-describedby="EmailHelp" placeholder="Nomor Telepon" value="{{ $item->Telepon }}">
+                            aria-describedby="EmailHelp" placeholder="45000" value="{{ $item->Harga_Barang }}">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="exampleInputEmail1">Stok Barang</label>
+                        <input name="Telepon" type="number" class="form-control mt-2" id="exampleInputEmail1"
+                            aria-describedby="EmailHelp" placeholder="6" value="{{ $item->Stok_Barang }}">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="exampleInputEmail1">Satuan Barang</label>
+                        <input name="Telepon" type="text" class="form-control mt-2" id="exampleInputEmail1"
+                            aria-describedby="EmailHelp" placeholder="PCS" value="{{ $item->Satuan_Barang }}">
                     </div>
                     <div class="form-group mt-5">
                         <button type="submit" class="btn btn-success">Success</button>

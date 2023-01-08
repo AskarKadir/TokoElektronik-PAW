@@ -31,4 +31,11 @@ class KasirController extends Controller
         $dataKasir->update($request->all());
         return redirect('kasir')->with('Sukses', 'Data Berhasil diubah');
     }
+
+    public function delete($id)
+    {
+        $dataKasir = \App\Models\Kasir::find($id);
+        $dataKasir->delete();
+        return redirect('/kasir')->with('Sukses', 'Data Berhasil dihapus');
+    }
 }

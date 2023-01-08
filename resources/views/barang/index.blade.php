@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Kasir</title>
+    <title>Barang</title>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- NAVBAR -->
@@ -22,7 +22,7 @@
                         <a class="nav-link " aria-current="page" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/barang">Barang</a>
+                        <a class="nav-link" href="/kasir">Kasir</a>
                     </li>
                 </ul>
                 <!-- Right Side Of Navbar -->
@@ -71,13 +71,13 @@
         @endif
         <div class="row">
             <div class="col-6 my-3">
-                <h1>Data Kasir</h1>
+                <h1>Data barang</h1>
             </div>
             <div class="col-6 my-4" align="right">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary btn-sm float right" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
-                    Tambah Kasir
+                    Tambah barang
                 </button>
             </div>
             <div class="table-responsive">
@@ -85,22 +85,26 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th>Nama</th>
-                            <th>Telepon</th>
+                            <th>Nama Barang</th>
+                            <th>Harga Barang</th>
+                            <th>Stok Barang</th>
+                            <th>Satuan Barang</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    @foreach ($dataKasir as $item)
+                    @foreach ($dataBarang as $item)
                         <tbody>
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->Nama }}</td>
-                                <td>{{ $item->Telepon }}</td>
+                                <td>{{ $item->Nama_Barang }}</td>
+                                <td>{{ $item->Harga_Barang }}</td>
+                                <td>{{ $item->Stok_Barang }}</td>
+                                <td>{{ $item->Satuan_Barang }}</td>
                                 <td>
-                                    <a href="/kasir/{{ $item->id }}/edit" class="btn btn-warning btn-sm">
+                                    <a href="/barang/{{ $item->id }}/edit" class="btn btn-warning btn-sm">
                                         Edit
                                     </a>
-                                    <a href="/kasir/delete/{{ $item->id }}"class="btn btn-danger btn-sm"
+                                    <a href="/barang/delete/{{ $item->id }}"class="btn btn-danger btn-sm"
                                         onclick="return confirm('Apakah anda ingin menghapus nomor {{ $loop->iteration }}')"
                                         data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Delete
@@ -119,22 +123,32 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Input Data Kasir</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Input Data Barang</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     {{-- Form Modal --}}
-                    <form action="{{ route('tambah.kasir') }}" method="POST">
+                    <form action="{{ route('tambah.barang') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="formGroupExampleInput" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="Nama" name="Nama"
-                                placeholder="Nurlinda">
+                            <label for="formGroupExampleInput" class="form-label">Nama Barang</label>
+                            <input type="text" class="form-control" id="Nama" name="Nama_Barang"
+                                placeholder="Terminal Kuningan">
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2" class="form-label">Telepon Kasir</label>
-                            <input type="text" class="form-control" id="Telepon" name="Telepon"
-                                placeholder="08114413333">
+                            <label for="formGroupExampleInput2" class="form-label">Harga Barang</label>
+                            <input type="text" class="form-control" id="Telepon" name="Harga_Barang"
+                                placeholder="15000">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput3" class="form-label">Stok Barang</label>
+                            <input type="number" class="form-control" id="Telepon" name="Stok_Barang"
+                                placeholder="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput4" class="form-label">Satuan Barang</label>
+                            <input type="text" class="form-control" id="Telepon" name="Satuan_Barang"
+                                placeholder="PCS">
                         </div>
                         {{-- Form Modal --}}
                 </div>

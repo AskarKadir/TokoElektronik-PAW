@@ -37,6 +37,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/kasir">Kasir</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/barang">Barang</a>
+                        </li>
 
                     </ul>
 
