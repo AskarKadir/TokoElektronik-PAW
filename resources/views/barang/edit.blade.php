@@ -10,7 +10,7 @@
             @endif
             <h1 class="py-3">Edit Data Barang</h1>
             <div class="row">
-                <form method="post" action="/kasir/{{ $item->id }}/update">
+                <form method="post" action="/barang/{{ $item->id }}/update">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="exampleInputEmail1">Nama Barang</label>
@@ -29,12 +29,29 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="exampleInputEmail1">Satuan Barang</label>
-                        <input name="Telepon" type="text" class="form-control mt-2" id="exampleInputEmail1"
-                            aria-describedby="EmailHelp" placeholder="PCS" value="{{ $item->Satuan_Barang }}">
+                        <select class="form-select form-select-md" aria-label=".form-select-sm example"
+                            name="Satuan_Barang">
+                            <option selected>{{ $item->Satuan_Barang }}</option>
+                            <option value="Meter">Meter</option>
+                            <option value="Centimeter">Centimeter</option>
+                            <option value="Roll">Roll</option>
+                            <option value="PCS">PCS</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="exampleInputEmail1">Status Barang</label>
+                        <select class="form-select form-select-md" aria-label=".form-select-sm example"
+                            name="Status_Barang">
+                            <option selected>{{ $item->Status_Barang }}</option>
+                            <option value="Menunggu Konfirmasi">Menunggu Konfirmasi</option>
+                            <option value="Sedang Dikirim">Sedang Dikirim</option>
+                            <option value="Telah diterima">Telah diterima</option>
+                            <option value="Pengembalian Barang">Pengembalian Barang</option>
+                        </select>
                     </div>
                     <div class="form-group mt-5">
-                        <button type="submit" class="btn btn-success">Success</button>
-                        <a href="/kasir"class="btn btn-danger mx3">Cancel</a>
+                        <button type="submit" class="btn btn-success">Ubah</button>
+                        <a href="/barang"class="btn btn-danger mx3">Cancel</a>
                     </div>
                 </form>
             </div>

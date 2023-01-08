@@ -101,11 +101,11 @@
                                         Edit
                                     </a>
                                     <a href="/kasir/delete/{{ $item->id }}"class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Apakah anda ingin menghapus nomor {{ $loop->iteration }}')"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        onclick="return confirm('Apakah anda ingin menghapus nomor {{ $loop->iteration }}')">
                                         Delete
                                     </a>
-
+                                    <button type="button" class="btn btn-light btn-sm"><a
+                                            href="/kasir/exportpdf">PDF</a></button>
                                 </td>
                             </tr>
                         </tbody>

@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
 //Kasir
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -34,6 +36,8 @@ Route::post('/kasir/{id}/update', [App\Http\Controllers\KasirController::class, 
 
 Route::get('/kasir/delete/{id}', [App\Http\Controllers\KasirController::class, 'delete']);
 
+Route::get('/kasir/exportpdf', [App\Http\Controllers\KasirController::class, 'exportPdf']);
+
 //Barang
 
 Route::get('/barang', [App\Http\Controllers\BarangController::class, 'index'])->name('barang');
@@ -45,3 +49,5 @@ Route::get('/barang/{id}/edit', [App\Http\Controllers\BarangController::class, '
 Route::post('/barang/{id}/update', [App\Http\Controllers\BarangController::class, 'update'])->name('ubah.barang');
 
 Route::get('/barang/delete/{id}', [App\Http\Controllers\BarangController::class, 'delete']);
+
+Route::get('/barang/exportpdf', [App\Http\Controllers\BarangController::class, 'exportPdf']);

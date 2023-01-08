@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PDF;
 
 class KasirController extends Controller
 {
@@ -37,5 +38,12 @@ class KasirController extends Controller
         $dataKasir = \App\Models\Kasir::find($id);
         $dataKasir->delete();
         return redirect('/kasir')->with('Sukses', 'Data Berhasil dihapus');
+    }
+
+    public function exportPdf()
+    {
+        $dataKasir = \App\Models\Kasir::all();
+        $pdf       = PDF::loadView('export.kasirpdf', ['dataKasir' => $dataKasir]);
+        return $pdf->download('kasir.pdf');
     }
 }

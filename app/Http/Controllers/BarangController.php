@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
+
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -37,5 +39,12 @@ class BarangController extends Controller
         $dataBarang = \App\Models\Barang::find($id);
         $dataBarang->delete();
         return redirect('/barang')->with('Sukses', 'Data Berhasil dihapus');
+    }
+
+    public function exportPdf()
+    {
+        $dataBarang = \App\Models\Barang::all();
+        $pdf        = PDF::loadView('export.barangpdf', ['dataBarang' => $dataBarang]);
+        return $pdf->download('barang.pdf');
     }
 }

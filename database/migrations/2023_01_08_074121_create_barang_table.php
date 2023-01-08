@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('Harga_Barang');
             $table->string('Stok_Barang');
             $table->string('Satuan_Barang');
+            $table->string('Status_Barang');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('_barang');
+        Schema::dropIfExists('barang');
     }
 };

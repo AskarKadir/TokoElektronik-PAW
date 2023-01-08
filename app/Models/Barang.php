@@ -9,5 +9,5 @@ class Barang extends Model
 {
     protected $table = 'barang';
 
-    protected $fillable = ['Nama_Barang', 'Stok_Barang', 'Harga_Barang', 'Satuan_Barang'];
+    protected $fillable = ['Nama_Barang', 'Stok_Barang', 'Harga_Barang', 'Satuan_Barang', 'Status_Barang'];
 }

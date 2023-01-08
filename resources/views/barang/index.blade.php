@@ -89,6 +89,7 @@
                             <th>Harga Barang</th>
                             <th>Stok Barang</th>
                             <th>Satuan Barang</th>
+                            <th>Status Barang</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -97,18 +98,21 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $item->Nama_Barang }}</td>
-                                <td>{{ $item->Harga_Barang }}</td>
+                                <td>@currency($item->Harga_Barang)</td>
                                 <td>{{ $item->Stok_Barang }}</td>
                                 <td>{{ $item->Satuan_Barang }}</td>
+                                <td>{{ $item->Status_Barang }}</td>
                                 <td>
                                     <a href="/barang/{{ $item->id }}/edit" class="btn btn-warning btn-sm">
                                         Edit
                                     </a>
                                     <a href="/barang/delete/{{ $item->id }}"class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Apakah anda ingin menghapus nomor {{ $loop->iteration }}')"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        onclick="return confirm('Apakah anda ingin menghapus nomor {{ $loop->iteration }}')">
                                         Delete
                                     </a>
+                                    </a>
+                                    <button type="button" class="btn btn-light btn-sm"><a
+                                            href="/barang/exportpdf">PDF</a></button>
 
                                 </td>
                             </tr>
@@ -137,18 +141,35 @@
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2" class="form-label">Harga Barang</label>
-                            <input type="text" class="form-control" id="Telepon" name="Harga_Barang"
+                            <input type="text" class="form-control" id="Harga_Barang" name="Harga_Barang"
                                 placeholder="15000">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput3" class="form-label">Stok Barang</label>
-                            <input type="number" class="form-control" id="Telepon" name="Stok_Barang"
+                            <input type="number" class="form-control" id="Stok_Barang" name="Stok_Barang"
                                 placeholder="5">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput4" class="form-label">Satuan Barang</label>
-                            <input type="text" class="form-control" id="Telepon" name="Satuan_Barang"
-                                placeholder="PCS">
+                            <select class="form-select form-select-md" aria-label=".form-select-sm example"
+                                name="Satuan_Barang">
+                                <option selected disabled>Silahkan Pilih Satuan</option>
+                                <option value="Meter">Meter</option>
+                                <option value="Centimeter">Centimeter</option>
+                                <option value="Roll">Roll</option>
+                                <option value="PCS">PCS</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput4" class="form-label">Status Barang</label>
+                            <select class="form-select form-select-md" aria-label=".form-select-sm example"
+                                name="Status_Barang">
+                                <option selected disabled>Silahkan Pilih Status</option>
+                                <option value="Menunggu Konfirmasi">Menunggu Konfirmasi</option>
+                                <option value="Sedang Dikirim">Sedang Dikirim</option>
+                                <option value="Telah diterima">Telah diterima</option>
+                                <option value="Pengembalian Barang">Pengembalian Barang</option>
+                            </select>
                         </div>
                         {{-- Form Modal --}}
                 </div>
